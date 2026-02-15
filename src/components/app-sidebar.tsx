@@ -5,10 +5,10 @@ import {Settings,LogOut,Bell, BarChart3 ,Users,Truck,Package,Scan,ArrowLeftRight
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
+  
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
+ 
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -146,51 +146,55 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="">
+ <Sidebar className="h-screen">
+
+  {/* Wrapper */}
+  <div className="flex h-full flex-col">
+
+    {/* ===== HEADER (STICKY) ===== */}
+    <div className="sticky top-0 z-50 border-b bg-white px-6 py-4">
+      <div className="flex items-center gap-3">
+        <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-[#0284C5]">
+          <Boxes className="h-6 w-6 text-white" />
+        </div>
+        <h1 className="text-lg font-bold text-black">
+          InvenPro
+        </h1>
+      </div>
+    </div>
+
+    {/* ===== SCROLLABLE MENU ===== */}
+    <div className="flex-1 overflow-y-auto px-4 py-4">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="border-b p-8 ">
-             <div className="flex items-center gap-3 ">
-    <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-[#0284C5]">
-      <Boxes className="h-6 w-6 text-white" />
-    </div>
-    <div>
-      <h1 className="text-lg font-semibold leading-none font-bold text-black">InvenPro</h1>
-      
-    </div>
-  </div>
-          </SidebarGroupLabel>
-          <br />
 
-          <SidebarGroupContent  className="text-[18px] font-medium text-6xl pl-6 ">
-            <SidebarMenu className="text-5xl hover:text-blue-800">
+          <SidebarGroupContent>
+            <SidebarMenu className="space-y-1">
               {items.map((item) => {
-                const Icon = item.icon
+                const Icon = item.icon;
 
                 return (
                   <SidebarMenuItem key={item.title}>
                     {item.children ? (
                       <Collapsible>
                         <CollapsibleTrigger asChild>
-                          <SidebarMenuButton className="w-full font-medium  text-[14px] ">
-  
-                            <Icon className="w-5 h-12" />
+                          <SidebarMenuButton className="w-full text-sm font-medium">
+                            <Icon className="w-5 h-5" />
                             <span className="flex-1">{item.title}</span>
                             <ChevronDown className="ml-auto h-4 w-4 transition-transform data-[state=open]:rotate-180" />
                           </SidebarMenuButton>
                         </CollapsibleTrigger>
 
-                        <CollapsibleContent className="text-black">
-                          <ul className="ml-6 mt-1 space-y-1">
+                        <CollapsibleContent>
+                          <ul className="ml-6 mt-2 space-y-1">
                             {item.children.map((sub) => (
-                              <li key={sub.title} >
-                                <a
-                                  href={sub.url}
-                                  className=" text-block rounded-md px-2 py-1 text-[15px] font-medium text-muted-foreground text-black hover:bg-[#0284C5] hover:text-accent-foreground"
->
-                                
+                              <li key={sub.title}>
+                                <Link
+                                  to={sub.url}
+                                  className="block rounded-md px-2 py-1 text-sm text-muted-foreground hover:bg-[#d2e0f4] hover:text-black"
+                                >
                                   {sub.title}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -199,35 +203,43 @@ export function AppSidebar() {
                     ) : (
                       <SidebarMenuButton asChild>
                         <Link to={item.url}>
-                          <Icon />
+                          <Icon className="w-5 h-5" />
                           <span>{item.title}</span>
                         </Link>
                       </SidebarMenuButton>
                     )}
                   </SidebarMenuItem>
-                )
+                );
               })}
             </SidebarMenu>
           </SidebarGroupContent>
+
         </SidebarGroup>
       </SidebarContent>
-       <SidebarFooter className="border-t p-3">
-    <div className="flex items-center justify-between text-sm text-muted-foreground">
-      <span><button className="rounded-full bg-blue-950 pl-2 pr-2 pt-1 pb-1">
-        <h1 className="text-white text-2xl">JD</h1>
-        </button></span>
-        <div className="pr-4">
-          <h1 className=" text-black">John doe</h1>
-          <h6 className="text-card-foreground">
-            Admin
-          </h6>
+    </div>
+
+    {/* ===== FOOTER (FIXED) ===== */}
+    <div className="border-t bg-white px-4 py-3">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-full bg-[#0284C5] flex items-center justify-center">
+            <span className="text-white font-semibold">JD</span>
+          </div>
+          <div>
+            <p className="text-sm font-medium text-black">John Doe</p>
+            <p className="text-xs text-muted-foreground">Admin</p>
+          </div>
         </div>
-      <div className="flex gap-2">
-        <Bell className="h-6 w-6 cursor-pointer text-black" />
-        <LogOut className="h-4 w-4 cursor-pointer hover:text-red-500" />
+
+        <div className="flex gap-3">
+          <Bell className="h-5 w-5 cursor-pointer text-black" />
+          <LogOut className="h-5 w-5 cursor-pointer hover:text-red-500" />
+        </div>
       </div>
     </div>
-  </SidebarFooter>
-    </Sidebar>
+
+  </div>
+</Sidebar>
+
   )
 }
