@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { FileText, IndianRupee, ShoppingCart, Clock,Eye ,CircleFadingPlus ,CircleX, FilePlus ,PackagePlus,BarChart3 , ClipboardCheck, Plus,
@@ -91,498 +90,249 @@ const Dashboard = () => {
      </div>
     {/* End Cards */}
     
-   <div className="flex">
-    <div>
-      <div className="p-2 flex gap-8">
-        <div className="grid grid-cols-1 bg-white rounded-lg shadow-md p-4 w-150">
-          <div className="flex justify-between gap-80 border-b pb-4 " >
-            <div className="max-w-md ">
-                Pending Approvals
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+  {/* LEFT : Pending Approvals */}
+  <div className="lg:col-span-2 bg-white rounded-xl shadow-md p-4">
+    
+    {/* Header */}
+    <div className="flex justify-between items-center border-b pb-3 mb-4">
+      <h3 className="font-semibold text-lg">Pending Approvals</h3>
+      <span className="text-blue-600 text-sm cursor-pointer">View all</span>
+    </div>
+
+    {/* Item */}
+    <div className="space-y-4">
+      {[
+        { id: "MR-2024-516", amount: "$2,450", time: "Today, 10:30 AM" },
+        { id: "MR-2024-517", amount: "$2,450", time: "Today, 10:30 AM" },
+        { id: "MR-2024-518", amount: "$890", time: "Today, 09:15 AM" },
+      ].map((item) => (
+        <div
+          key={item.id}
+          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-4 last:border-none"
+        >
+          {/* Left */}
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="font-bold">{item.id}</span>
+              <span className="text-xs bg-blue-200 text-blue-800 px-2 rounded-full">
+                High
+              </span>
             </div>
-            <div>
-              <p>View all</p>
-            </div>
-
+            <p className="text-sm font-medium">
+              Material Request · Sarah Johnson
+            </p>
+            <p className="text-xs text-muted-foreground">{item.time}</p>
           </div>
-          <div className="border-b pb-3">
-                <div className="flex gap-14">
-                  <div className="">
-                     <div className="flex gap-3">
-                      <div className="font-bold">
-                          MR-2024-516
-                      </div>
-                      <div>
-                        <div className="grid grid-cols-1 rounded-full bg-blue-200">
-                          <p className="text-blue-800 pl-2 pr-2">high</p>
 
-                        </div>
-                      </div>
-
-                     </div>
-                     <div className="pb-2">
-                      <p className="text-sm font-medium text-black">
-                        Material request.sarah johnson
-                      </p>
-                      <p className="text-sm font-medium text-muted-foreground">
-                        today,10:30
-                      </p>
-                     </div>
-                  </div>
-                  <div className="flex gap-6 text-center pt-5 pl-24">
-                    <div>
-                           <h6>$2,450</h6>
-                    </div>
-                    <div>
-                      <Eye />
-                    </div>
-                    <div className="text-emerald-400 h-0.5px">
-                      <CircleFadingPlus />
-                    </div>
-                    <div className="text-rose-400 h-0.5px">
-                        <CircleX />
-                    </div>
-                  </div>
-
-                </div>
+          {/* Right */}
+          <div className="flex items-center gap-4">
+            <span className="font-semibold">{item.amount}</span>
+            <Eye className="w-4 h-4 cursor-pointer" />
+            <CircleFadingPlus className="w-4 h-4 text-emerald-500 cursor-pointer" />
+            <CircleX className="w-4 h-4 text-rose-500 cursor-pointer" />
           </div>
-          <div className="border-b pb-3">
-               <div className="flex gap-14">
-                  <div className="">
-                    
-                    <div className="flex gap-1.5 pt-2">
-                           <div className="font-bold">
-                                Mr-2024-0516
-                           </div>
-                           <div>
-                            <div className="grid-grid-cols-1 rounded-full bg-blue-200">
-                                   <p className="text-blue-800 pl-2 pr-2">
-                                    high
-                                   </p>
-                            </div>
-                           </div>
-                           
-                    </div>
-                    <p className="text-sm font-medium text-black">
-                      Material request.sarah johnson
-                    </p>
-                    <p className="text-sm font-medium text-muted-foreground">
-                      today,10:30 AM
-                    </p>
-                  </div>
-                  <div className="flex gap-6 text-center pt-5 pl-24">
-                    <div>
-                       <h6>$2,450</h6>
-                    </div>
-                    <div>
-                      <Eye />
-                    </div>
-                    <div className="text-emerald-400 h-0.5px">
-                      <CircleFadingPlus />
-                    </div>
-                    <div className="text-rose-400 h-0.5px">
-                      <CircleX />
-                    </div>
-                  </div>
-               </div>
-          </div>
-          <div className="">
-            <div className="">
-                   <div className="flex gap-14">
-                       <div className="">
-                        <div className="flex gap-1.5 pt-2">
-                          <div className="font-bold">
-                           Mr-2024-0516
-                          </div>
-                          <div className="">
-                            <div className="grid grid-cols-1 rounded-full bg-blue-200">
-                             <p className="text-blue-800 pl-2 pr-2">
-                              high
-                             </p>
-                            </div>
-
-                          </div>
-
-                        </div>
-                        <br />
-                        <p className="text-sm font-medium text-black ">
-                         Material Request .sarah Johnson
-                        </p>
-                        <p className="text-sm font-medium text-muted-foreground">
-                          Today,09:15AM
-                        </p>
-                       </div>
-                       <div className="flex gap-6 text-center pt-5 pl-24">
-                        <div>
-                            <h6>$890</h6>
-                        </div>
-                        <div>
-                          <Eye />
-                        </div>
-                        <div className="text-emerald-400">
-                          <CircleFadingPlus />
-                        </div>
-                        <div  className="text-rose-400">
-                          <CircleX />
-                        </div>
-                       </div>
-                   </div>
-            </div>
-          </div>
-              
         </div>
-      </div>
-    </div>
-    <div>
-      <div>
-        <div>
-
-        </div>
-        <div className="max-w-md rounded-xl border bg-white p-4">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold">Quick Action</h2>
-            <div className="flex items-center gap-1 text-blue-600">
-              <Plus  className="w-4 h-4"/>
-              Customize
-
-            </div>
-          </div>
-       <div className="grid grid-cols-2 gap-4">
-
-   {/* -- */}
-   <div className="rounded-xl p-4 bg-blue-50 hover:bg-blue-100 transition cursor-pointer">
-    <FilePlus className="w-6 h-6 text-blue-600 mb-2" />
-    <h3 className="font-semibold text-blue-700">
-      New Material Request
-    </h3>
-    <p className="text-sm text-blue-600">
-      Create a new request for materials
-    </p>
-    </div>
-
-   {/* record green */}
-   <div className="rounded-xl p-4 bg-emerald-50 hover:bg-emerald-100 transition cursor-pointer">
-    <PackagePlus className="w-6 h-6 text-emerald-600 mb-2" />
-    <h3 className="font-semibold text-emerald-700">
-      Record GRN
-    </h3>
-    <p className="text-sm text-emerald-600">
-      Receive goods from vendor
-    </p>
-   </div>
-
-   {/* qc insepction */}
-   <div className="rounded-xl p-4 bg-orange-50 hover:bg-orange-100 transition cursor-pointer">
-    <ClipboardCheck className="w-6 h-6 text-orange-600 mb-2" />
-    <h3 className="font-semibold text-orange-700">
-      QC Inspection
-    </h3>
-    <p className="text-sm text-orange-600">
-      Start quality inspection
-    </p>
-   </div>
-
-   {/* view reports */}
-    <div className="rounded-xl p-4 bg-purple-50 hover:bg-purple-100 transition cursor-pointer">
-    <BarChart3 className="w-6 h-6 text-purple-600 mb-2" />
-    <h3 className="font-semibold text-purple-700">
-      View Reports
-    </h3>
-    <p className="text-sm text-purple-600">
-      Access analytics & reports
-    </p>
-    </div>
-
-    </div>
-    </div>
-
-      </div>
-    </div>
-   </div>
-            
-    {/* bhabani last table */}
-      <div>
-          <div className="flex">
-    <div>
-      <div className="p-2 flex gap-8">
-        <div className="grid grid-cols-1 bg-white rounded-lg shadow-md p-4 w-150">
-          <div className="flex gap-80 border-b pb-4 " >
-            <div className="">
-                Pending Approvals
-            </div>
-            <div>
-              <p>View all</p>
-            </div>
-
-          </div>
-          <div className="border-b pb-3">
-                <div className="flex gap-14">
-                  <div className="">
-                     <div className="flex gap-3">
-                      <div className="font-bold">
-                          MR-2024-516
-                      </div>
-                      <div>
-                        <div className="grid grid-cols-1 rounded-full bg-blue-200">
-                          <p className="text-blue-800 pl-2 pr-2">high</p>
-
-                        </div>
-                      </div>
-
-                     </div>
-                     <div className="pb-2">
-                      <p className="text-sm font-medium text-black">
-                        Material request.sarah johnson
-                      </p>
-                      <p className="text-sm font-medium text-muted-foreground">
-                        today,10:30
-                      </p>
-                     </div>
-                  </div>
-                  <div className="flex gap-6 text-center pt-5 pl-24">
-                    <div>
-                           <h6>$2,450</h6>
-                    </div>
-                    <div>
-                      <Eye />
-                    </div>
-                    <div className="text-emerald-400 h-0.5px">
-                      <CircleFadingPlus />
-                    </div>
-                    <div className="text-rose-400 h-0.5px">
-                        <CircleX />
-                    </div>
-                  </div>
-
-                </div>
-          </div>
-          <div className="border-b pb-3">
-               <div className="flex gap-14">
-                  <div className="">
-                    
-                    <div className="flex gap-1.5 pt-2">
-                           <div className="font-bold">
-                                Mr-2024-0516
-                           </div>
-                           <div>
-                            <div className="grid-grid-cols-1 rounded-full bg-blue-200">
-                                   <p className="text-blue-800 pl-2 pr-2">
-                                    high
-                                   </p>
-                            </div>
-                           </div>
-                           
-                    </div>
-                    <p className="text-sm font-medium text-black">
-                      Material request.sarah johnson
-                    </p>
-                    <p className="text-sm font-medium text-muted-foreground">
-                      today,10:30 AM
-                    </p>
-                  </div>
-                  <div className="flex gap-6 text-center pt-5 pl-24">
-                    <div>
-                       <h6>$2,450</h6>
-                    </div>
-                    <div>
-                      <Eye />
-                    </div>
-                    <div className="text-emerald-400 h-0.5px">
-                      <CircleFadingPlus />
-                    </div>
-                    <div className="text-rose-400 h-0.5px">
-                      <CircleX />
-                    </div>
-                  </div>
-               </div>
-          </div>
-          <div className="">
-            <div className="">
-                   <div className="flex gap-14">
-                       <div className="">
-                        <div className="flex gap-1.5 pt-2">
-                          <div className="font-bold">
-                           Mr-2024-0516
-                          </div>
-                          <div className="">
-                            <div className="grid grid-cols-1 rounded-full bg-blue-200">
-                             <p className="text-blue-800 pl-2 pr-2">
-                              high
-                             </p>
-                            </div>
-
-                          </div>
-
-                        </div>
-                        <br />
-                        <p className="text-sm font-medium text-black">
-                          Material Request .Sarah Johnson
-                        </p>
-                        <p className="text-sm font-medium text-muted-foreground">
-                          today,10:30 AM
-                        </p>
-                       </div>
-                       <div className="flex gap-6 text-center pt-5 pl-24">
-                        <div>
-                            <h6>$2,450</h6>
-                        </div>
-                        <div>
-                          <Eye />
-                        </div>
-                        <div className="text-emerald-400">
-                          <CircleFadingPlus />
-                        </div>
-                        <div  className="text-rose-400">
-                          <CircleX />
-                        </div>
-                       </div>
-                   </div>
-            </div>
-          </div>
-              
-        </div>
-      </div>
-    </div>
-    <div>
-
-    </div>
-    <div>
-      <div className="max-w-md bg-white rounded-xl border shadow-sm overflow-auto">
-
-  
-   <div className="flex  gap-18 justify-between items-center px-4 py-3 border-b">
-    <h5 className="font-semibold text-lg">Inventory Overview</h5>
-    <span className="text-blue-600 text-sm cursor-pointer">View all</span>
-   </div>
-
- 
-      <div className="px-4 py-4 border-b">
-    <div className="flex justify-between items-center mb-2">
-      <h3 className="font-medium">Office Chairs</h3>
-      <div className="flex items-center gap-2 text-sm">
-        <span className="font-semibold">45</span> / 100
-        <span >
-          <div>
-            <ArrowUpRight className="text-green-600"/>
-          </div>
-        </span>
-      </div>
-    </div>
-
-    <div className="h-2 bg-[#324052] rounded-full mb-2">
-      <div className="h-2 bg-[#0284C5] rounded-full w-[45%]"></div>
-    </div>
-
-    <div className="flex justify-between text-sm text-muted-foreground">
-      <span>Furniture</span>
-      <span>Min: 20</span>
-    </div>
-   </div>
-
- 
-      <div className="px-4 py-4 border-b">
-    <div className="flex justify-between items-center mb-2">
-      <h3 className="font-medium">Printer Paper (A4)</h3>
-      <div className="flex items-center gap-2 text-sm">
-
-        <span className="font-semibold">120</span> / 500
-
-        <span>
-          <div>
-          < ArrowDownRight  className="text-red-600"/>
-          </div>
-        </span>
-      </div>
-    </div>
-
-    <div className="h-2 bg-[#324052] rounded-full mb-2">
-      <div className="h-2 bg-[#0284C5] rounded-full w-[24%]"></div>
-    </div>
-
-    <div className="flex justify-between text-sm text-muted-foreground">
-      <span>Stationery</span>
-      <span>Min: 50</span>
-    </div>
-   </div>
-
-  
-   <div className="px-4 py-4 border-b">
-    <div className="flex justify-between items-center mb-2">
-      <h3 className="font-medium flex items-center gap-2">
-        Safety Helmets
-        <span >
-          <div>
-            <AlertTriangle  className="text-black "/>
-          </div>
-        </span>
-      </h3>
-      <div className="flex items-center gap-2 text-sm">
-        <span className="font-semibold">15</span> / 100
-        <span>
-          <div>
-            <ArrowDownRight className="text-red-600"/>
-          </div>
-        </span>
-      </div>
-    </div>
-
-    <div className="h-2 bg-[#324052] rounded-full mb-2">
-      <div className="h-2 bg-[#F59E0B] rounded-full w-[67%]"></div>
-    </div>
-
-    <div className="flex justify-between text-sm text-muted-foreground">
-      <span>Safety</span>
-      <span>Min: 30</span>
+      ))}
     </div>
   </div>
 
-  
-      <div className="px-4 py-4">
-    <div className="flex justify-between items-center mb-2">
-      <h3 className="font-medium flex items-center gap-2">
-        Laptop Chargers
-        <span>
-          <div>
-            <AlertTriangle  className="text-orange-500" />
-          </div>
-        </span>
-      </h3>
-      <div className="flex items-center gap-2 text-sm">
-        <span className="font-semibold">8</span> / 50
-        <span >
-          <div>
-            <ArrowDownRight className="text-red-600"/>
-          </div>
-        </span>
+  {/* RIGHT : Quick Actions */}
+  <div className="bg-white rounded-xl border p-4">
+    
+    <div className="flex justify-between items-center mb-4">
+      <h3 className="text-lg font-semibold">Quick Actions</h3>
+      <div className="flex items-center gap-1 text-blue-600 text-sm cursor-pointer">
+        <Plus className="w-4 h-4" />
+        Customize
       </div>
     </div>
 
-    <div className="h-2 bg-[#324052] rounded-full mb-2">
-      <div className="h-2 bg-[#F59E0B] rounded-full w-[20%]"></div>
-    </div>
-
-    <div className="flex justify-between text-sm text-muted-foreground">
-      <span>Electronics</span>
-      <span>Min: 10</span>
-    </div>
-  </div>
-
- </div>
-
-    </div>
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       
-     
+      <div className="rounded-xl p-4 bg-blue-50 hover:bg-blue-100 transition cursor-pointer">
+        <FilePlus className="w-6 h-6 text-blue-600 mb-2" />
+        <h4 className="font-semibold text-blue-700">New Material Request</h4>
+        <p className="text-sm text-blue-600">
+          Create a new request for materials
+        </p>
+      </div>
 
+      <div className="rounded-xl p-4 bg-emerald-50 hover:bg-emerald-100 transition cursor-pointer">
+        <PackagePlus className="w-6 h-6 text-emerald-600 mb-2" />
+        <h4 className="font-semibold text-emerald-700">Record GRN</h4>
+        <p className="text-sm text-emerald-600">
+          Receive goods from vendor
+        </p>
+      </div>
 
+      <div className="rounded-xl p-4 bg-orange-50 hover:bg-orange-100 transition cursor-pointer">
+        <ClipboardCheck className="w-6 h-6 text-orange-600 mb-2" />
+        <h4 className="font-semibold text-orange-700">QC Inspection</h4>
+        <p className="text-sm text-orange-600">
+          Start quality inspection
+        </p>
+      </div>
 
+      <div className="rounded-xl p-4 bg-purple-50 hover:bg-purple-100 transition cursor-pointer">
+        <BarChart3 className="w-6 h-6 text-purple-600 mb-2" />
+        <h4 className="font-semibold text-purple-700">View Reports</h4>
+        <p className="text-sm text-purple-600">
+          Access analytics & reports
+        </p>
+      </div>
 
+    </div>
+  </div>
+</div>
+ 
+    {/* bhabani last table */}
+ <div className="min-h-screen bg-blue-50 p-4 sm:p-6">
 
+  {/* Main Grid */}
+  <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-6">
 
+    {/* LEFT : Pending Approvals */}
+    <div className="lg:col-span-2 bg-white rounded-xl shadow-md p-4">
 
+      {/* Header */}
+      <div className="flex justify-between items-center border-b pb-3 mb-4">
+        <h3 className="text-lg font-semibold">Pending Approvals</h3>
+        <span className="text-sm text-blue-600 cursor-pointer">
+          View all
+        </span>
+      </div>
 
+      {/* Items */}
+      {[
+        { id: "MR-2024-516", amount: "$2,450", time: "Today, 10:30 AM" },
+        { id: "MR-2024-517", amount: "$2,450", time: "Today, 10:30 AM" },
+        { id: "MR-2024-518", amount: "$890", time: "Today, 09:15 AM" },
+      ].map((item) => (
+        <div
+          key={item.id}
+          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-4 last:border-none"
+        >
+          {/* Left */}
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="font-bold">{item.id}</span>
+              <span className="text-xs bg-blue-200 text-blue-800 px-2 rounded-full">
+                High
+              </span>
+            </div>
+            <p className="text-sm font-medium">
+              Material Request · Sarah Johnson
+            </p>
+            <p className="text-xs text-muted-foreground">{item.time}</p>
+          </div>
 
+          {/* Right */}
+          <div className="flex items-center gap-4">
+            <span className="font-semibold">{item.amount}</span>
+            <Eye className="w-4 h-4 cursor-pointer" />
+            <CircleFadingPlus className="w-4 h-4 text-emerald-500 cursor-pointer" />
+            <CircleX className="w-4 h-4 text-rose-500 cursor-pointer" />
+          </div>
+        </div>
+      ))}
+    </div>
 
- </div>
+    {/* RIGHT : Inventory Overview */}
+    <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+
+      {/* Header */}
+      <div className="flex justify-between items-center px-4 py-3 border-b">
+        <h5 className="font-semibold text-base sm:text-lg">
+          Inventory Overview
+        </h5>
+        <span className="text-blue-600 text-sm cursor-pointer">
+          View all
+        </span>
+      </div>
+
+      {/* Inventory Items */}
+      {[
+        {
+          name: "Office Chairs",
+          value: 45,
+          total: 100,
+          category: "Furniture",
+          min: 20,
+          percent: 45,
+          up: true,
+        },
+        {
+          name: "Printer Paper (A4)",
+          value: 120,
+          total: 500,
+          category: "Stationery",
+          min: 50,
+          percent: 24,
+        },
+        {
+          name: "Safety Helmets",
+          value: 15,
+          total: 100,
+          category: "Safety",
+          min: 30,
+          percent: 15,
+          warning: true,
+        },
+        {
+          name: "Laptop Chargers",
+          value: 8,
+          total: 50,
+          category: "Electronics",
+          min: 10,
+          percent: 16,
+          warning: true,
+        },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="px-4 py-4 border-b last:border-none"
+        >
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="font-medium flex items-center gap-2 text-sm sm:text-base">
+              {item.name}
+              {item.warning && (
+                <AlertTriangle className="w-4 h-4 text-orange-500" />
+              )}
+            </h3>
+
+            <div className="flex items-center gap-2 text-sm">
+              <span className="font-semibold">
+                {item.value}/{item.total}
+              </span>
+              {item.up ? (
+                <ArrowUpRight className="w-4 h-4 text-green-600" />
+              ) : (
+                <ArrowDownRight className="w-4 h-4 text-red-600" />
+              )}
+            </div>
+          </div>
+
+          <div className="h-2 bg-slate-300 rounded-full mb-2">
+            <div
+              className={`h-2 rounded-full ${
+                item.warning ? "bg-amber-500" : "bg-sky-600"
+              }`}
+              style={{ width: `${item.percent}%` }}
+            />
+          </div>
+
+          <div className="flex justify-between text-xs sm:text-sm text-muted-foreground">
+            <span>{item.category}</span>
+            <span>Min: {item.min}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
   
   </div>
   
