@@ -1,20 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { loginSuccess } from "@/store/authSlice";
+import { Provider } from "react-redux";
 import AppRouter from "./AppRouter";
+import { store } from "./config/redux/store/store";
 
 const App = () => {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-
-    if (token) {
-      dispatch(loginSuccess(token));
-    }
-  }, [dispatch]);
-
-  return <AppRouter />;
+  return <AppRouter />
 };
 
 export default App; // ✅ MUST BE HERE

@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import type { Rootstate } from "@/store/store";
+import type { RootState } from "@/config/redux/reducers/rootReducer";
 
 const TEN_MIN = 10 * 60 * 1000;
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const token = useSelector((state: Rootstate) => state.auth.token);
+  const token = useSelector((state: RootState) => state.auth.accessToken);
 
   const loginTime = localStorage.getItem("loginTime");
 
