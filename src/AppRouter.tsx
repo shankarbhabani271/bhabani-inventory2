@@ -1,32 +1,26 @@
-import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import React from "react";
 import Layout from "./Layout";
-import Login from "./components/pages/Login";
-import Forgotpassword from "./components/pages/Forgotpassword";
-import Sendotp from "./components/pages/Sendotp";
-import Productmenu from "./components/pages/Productmenu";
-
-import SignInPage from "./components/pages/Login";
 import Loader from "./components/Loader";
-import { useSelector } from "react-redux";
-import type { RootState } from "./config/redux/reducers/rootReducer";
-import Signup from "./components/pages/Signup";
+//import Login from "./components/pages/Login";
+//import CreateEmployee from "./components/pages/Createemployee";
+// Normal imports
+import Productmenu from "./components/pages/Productmenu";
 import Userdetails from "./components/pages/Userdetails";
 import Material from "./components/pages/Material";
-import Studentpage from "./components/pages/studentpage";
-import Po from "./components/pages/Po"
+import Po from "./components/pages/Po";
+import Login from "./components/pages/Login";
+import CreateEmployee from "./components/pages/CreateEmployee";
+import Poo from "./components/pages/Poo"
+// Lazy imports
 const Dashboard = lazy(() => import("./components/pages/Dashboard"));
-const MaterialRequest = lazy(
-  () => import("./components/pages/MaterialRequest"),
-);
+const MaterialRequest = lazy(() => import("./components/pages/MaterialRequest"));
 const Apporavals = lazy(() => import("./components/pages/Apporavals"));
 const Procurement = lazy(() => import("./components/pages/Procurement"));
 const Inventory = lazy(() => import("./components/pages/Inventory"));
 const QcManagement = lazy(() => import("./components/pages/QcManagement"));
-const BarcodeTracking = lazy(
-  () => import("./components/pages/BarcodeTracking"),
-);
+const BarcodeTracking = lazy(() => import("./components/pages/BarcodeTracking"));
 const Returns = lazy(() => import("./components/pages/Returns"));
 const Vendors = lazy(() => import("./components/pages/Vendors"));
 const User = lazy(() => import("./components/pages/User"));
@@ -35,169 +29,206 @@ const Reports = lazy(() => import("./components/pages/Reports"));
 const Masters = lazy(() => import("./components/pages/Masters"));
 
 const SuspenseGate = ({ children }: { children: React.ReactNode }) => (
-  <Suspense fallback={<div>Loading ...</div>}>{children}</Suspense>
+  <Suspense fallback={<Loader />}>
+    {children}
+  </Suspense>
 );
+
 const AppRouter = () => {
   return (
     <Routes>
-      <Route element={<GuestOnly />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<Forgotpassword />} />
-        <Route path="/sendotp" element={<Sendotp />} />
-        <Route path="/signup" element={<Signup />} />
-             
-      </Route>
-      <Route element={<RequireAuth />}>
-        <Route index element={<Dashboard />} />
-          <Route
-           path="/userdetails"
-            element={<Userdetails />} />
-            <Route 
-            path="/material"
-            element={<Material/>}/>
-            <Route
-            path="/studentpage"
-            element={<Studentpage/>}/>
-            <Route
-            path="/po"
-            element={<Po/>}/>
-            <Route
-            path="/productmenu"
-            element={<Productmenu/>}/>
-          
+      
+      {/* Login Page */}
+     <Route path="login" element={<Login/>}/>
+     <Route path="createemployee" element={<CreateEmployee/>}/>
+     
+      {/* Main Layout Routes */}
+      <Route
+        path="/"
+        element={
+          <Layout>
+            <Suspense fallback={<Loader />}>
+              <Dashboard />
+            </Suspense>
+          </Layout>
+        }
+      />
+      <Route
+      path="/poo"
+      element={
+        <Layout>
+          <Poo/>
+        </Layout>
+      }/>
 
-        <Route
-          path="material-request"
-          element={
+      <Route
+        path="/userdetails"
+        element={
+          <Layout>
+            <Userdetails />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/material"
+        element={
+          <Layout>
+            <Material />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/po"
+        element={
+          <Layout>
+            <Po />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/productmenu"
+        element={
+          <Layout>
+            <Productmenu />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/material-request"
+        element={
+          <Layout>
             <SuspenseGate>
               <MaterialRequest />
             </SuspenseGate>
-          }
-        />
-        //Product page 
-        
+          </Layout>
+        }
+      />
 
-        <Route
-          path="apporavals"
-          element={
+      <Route
+        path="/apporavals"
+        element={
+          <Layout>
             <SuspenseGate>
               <Apporavals />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="procurement"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/procurement"
+        element={
+          <Layout>
             <SuspenseGate>
               <Procurement />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="inventory"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/inventory"
+        element={
+          <Layout>
             <SuspenseGate>
               <Inventory />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="qcmanagement"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/qcmanagement"
+        element={
+          <Layout>
             <SuspenseGate>
               <QcManagement />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="barcode-tracking"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/barcode-tracking"
+        element={
+          <Layout>
             <SuspenseGate>
               <BarcodeTracking />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="returns"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/returns"
+        element={
+          <Layout>
             <SuspenseGate>
               <Returns />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="vendors"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/vendors"
+        element={
+          <Layout>
             <SuspenseGate>
               <Vendors />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="reports"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/reports"
+        element={
+          <Layout>
             <SuspenseGate>
               <Reports />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="settings"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/settings"
+        element={
+          <Layout>
             <SuspenseGate>
               <Settings />
             </SuspenseGate>
-          }
-        />
-        <Route
-          path="user"
-          element={
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/user"
+        element={
+          <Layout>
             <SuspenseGate>
               <User />
             </SuspenseGate>
-          }
-        />
+          </Layout>
+        }
+      />
 
-        <Route
-          path="masters"
-          element={
+      <Route
+        path="/masters"
+        element={
+          <Layout>
             <SuspenseGate>
               <Masters />
             </SuspenseGate>
-          }
-        />
-
-  
-      </Route>
+          </Layout>
+        }
+      />
     </Routes>
-  );
-};
-
-const RequireAuth = () => {
-  const { accessToken } = useSelector((state: RootState) => state.auth);
-
-  if (!accessToken) {
-    return <SignInPage />;
-  }
-
-  return (
-    <Suspense fallback={<Loader />}>
-      <Layout> {<Outlet />} </Layout>
-    </Suspense>
-  );
-};
-
-const GuestOnly = () => {
-  const { accessToken } = useSelector((state: RootState) => state.auth);
-
-  return (
-    <Suspense fallback={<Loader />}>
-      {accessToken ? (
-        <Navigate to={"/"} replace />
-      ) : (
-        <Suspense fallback={<Loader />}>{<Outlet />}</Suspense>
-      )}
-    </Suspense>
   );
 };
 
