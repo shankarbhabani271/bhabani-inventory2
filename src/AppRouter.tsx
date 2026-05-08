@@ -13,6 +13,7 @@ import Po from "./components/pages/Po";
 import Login from "./components/pages/Login";
 import CreateEmployee from "./components/pages/CreateEmployee";
 import Poo from "./components/pages/Poo"
+import VerifyOtp from "./components/pages/VerifyOtp"
 // Lazy imports
 const Dashboard = lazy(() => import("./components/pages/Dashboard"));
 const MaterialRequest = lazy(() => import("./components/pages/MaterialRequest"));
@@ -41,7 +42,7 @@ const AppRouter = () => {
       {/* Login Page */}
      <Route path="login" element={<Login/>}/>
      <Route path="createemployee" element={<CreateEmployee/>}/>
-     
+     <Route path="VerifyOtp" element={<VerifyOtp/>}/>
       {/* Main Layout Routes */}
       <Route
         path="/"
