@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import { ShieldCheck } from "lucide-react";
 // update path if needed
 import bgImage from "../../assets/otp-bg.png";
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
 const VerifyOtp = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [timeLeft, setTimeLeft] = useState(300);
+  const navigate = useNavigate();
+const location = useLocation();
+
+const email = location.state?.email;
   useEffect(() => {
     if (timeLeft <= 0) return;
 
@@ -38,12 +44,12 @@ const handleVerify = async () => {
 
   try {
     const res = await axios.post(
-      "http://localhost:8080/api/employee/verify-otp",
-      {
-        email,
-        otp: finalOtp
-      }
-    );
+  "http://localhost:8080/api/employees/verify-otp",
+  {
+    email,
+    otp: finalOtp
+  }
+);
 
     if (res.data.success) {
       alert("OTP Verified Successfully");
@@ -69,15 +75,14 @@ const handleVerify = async () => {
       <div className="absolute inset-0 bg-black/20"></div>
 
       {/* OTP Card */}
-      <div className="relative z-10 bg-white/95 backdrop-blur-lg w-full max-w-md rounded-3xl shadow-2xl p-8">
-
+      <div className="relative z-10 bg-white/95 backdrop-blur-lg w-full max-w-md sm:max-w-lg rounded-3xl shadow-2xl p-5 sm:p-8">
         {/* Header */}
         <div className="text-center mb-6">
           <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
             <ShieldCheck className="text-yellow-500" size={30} />
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-800">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
             Verify OTP
           </h2>
 
@@ -87,7 +92,7 @@ const handleVerify = async () => {
         </div>
 
         {/* OTP Boxes */}
-        <div className="flex justify-center gap-3 mb-6">
+       <div className="flex justify-center gap-2 sm:gap-3 mb-6 flex-wrap">
           {otp.map((digit, index) => (
             <input
               key={index}
@@ -98,7 +103,7 @@ const handleVerify = async () => {
               onChange={(e) =>
                 handleChange(e.target.value, index)
               }
-              className="w-14 h-14 text-center text-xl font-bold border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+             className="w-10 h-10 sm:w-14 sm:h-14 text-center text-lg sm:text-xl font-bold border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
             />
           ))}
         </div>
